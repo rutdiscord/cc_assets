@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hook a Duck</title>
+    <link rel="icon" type="image/png" href="./res/duckhead.png">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <link rel="stylesheet" href="./stylesheet.css" />
+  </head>
+  <body>
+    <h1>Hook a Duck!</h1>
+    <p class="small italic"><input type="checkbox"/> <span>Mute audio?</span></p>
+    <div id="gamebox"></div>
+    <div class="rules">
+      <p>Get a duck!</p>
+      <p>"Try" to get a good one!</p>
+    </div>
+    <p id="status"></p>
+    <div id="playercard">
+      <img class="pic" />
+      <h3>Hello, my name is</h3>
+      <div class="name"></div>
+    </div>
+    <audio id="intro">
+      <source src="./res/miyuki-intro.ogg" type="audio/ogg" />
+      <source src="./res/miyuki-intro.mp3" type="audio/mpeg" />
+    </audio>
+    <audio loop id="bgm">
+      <source src="./res/miyuki.ogg" type="audio/ogg" />
+      <source src="./res/miyuki.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="sfx">
+      <source src="./res/sfx.ogg" type="audio/ogg" />
+      <source src="./res/sfx.mp3" type="audio/mpeg" />
+    </audio>
+  <script async src="duck.js"></script>
+  </body>
+</html>
