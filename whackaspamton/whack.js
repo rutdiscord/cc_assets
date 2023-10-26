@@ -49,8 +49,11 @@ async function fail(reason, response) {
     timer.remove();
 
     let box = document.querySelector('#gamebox');
+    box.classList.remove('over');
 
-    document.querySelector('.rules').remove();
+    try {
+        document.querySelector('.rules').remove();
+    } catch (e) {}
     document.querySelector('.pad').remove();
 
     let message = document.createElement('h4');
@@ -180,7 +183,8 @@ async function conclusion() {
             if (!response.ok) {
                 return await fail('Your token could not be validated.', response);
             }
-            let result = response.json();
+            let result = await response.json();
+
             if (!result.valid) {
                 return await fail('Your token was rejected by the server.', {fake:true, reason:result.reason});
             }
@@ -189,6 +193,7 @@ async function conclusion() {
             let msg = document.createElement('p');
             msg.className = 'italic';
             msg.textContent = `You scored ${tix} tickets. Check the bot to see your total!`;
+            document.body.insertBefore(msg, document.getElementById('gamebox'))
 
         } catch (e) {
             errorOut('submitting your score', e);
