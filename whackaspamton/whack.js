@@ -9,12 +9,7 @@ let boxes = [],
     minus = 0,
     plus = 0;
 
-let Local = false; // Change this in the dev console
-
-function domain() {
-    if (Local) { return 'http://localhost/api'}
-    return 'https://api.bliv.red/api';
-}
+let domain = 'https://api.bliv.red/api';
 
 function errorOut(reason, e) {
     let children = document.body.querySelectorAll(':not(script)');
@@ -171,34 +166,38 @@ async function conclusion() {
         box.classList.add('over');
         timer.textContent = 'Submitting your score...';
 
+        let result;
+
         let tix = score/10;
         
-        let url = `${domain()}/submit_session?session=${token}&game_name=${tokenContent.context.Game}&score=${tix}`;
+        if (token !== 'abc.def' ) {
+            let url = `${domain}/submit_session?session=${token}&game_name=${tokenContent.context.Game}&score=${tix}`;
 
-        let response;
+            let response;
 
-        try {
-            response = await fetch(url);
+            try {
+                response = await fetch(url);
 
-            if (!response.ok) {
-                return await fail('Your token could not be validated.', response);
+                if (!response.ok) {
+                    return await fail('Your token could not be validated.', response);
+                }
+                result = await response.json();
+
+                if (!result.valid) {
+                    return await fail('Your token was rejected by the server.', {fake:true, reason:result.reason});
+                }
+
+            } catch (e) {
+                errorOut('submitting your score', e);
+                return;
             }
-            let result = await response.json();
-
-            if (!result.valid) {
-                return await fail('Your token was rejected by the server.', {fake:true, reason:result.reason});
-            }
-
-            timer.textContent = 'Your score has been submitted!';
-            let msg = document.createElement('p');
-            msg.className = 'italic';
-            msg.textContent = `You scored ${tix} tickets. Check the bot to see your total!`;
-            document.body.insertBefore(msg, document.getElementById('gamebox'))
-
-        } catch (e) {
-            errorOut('submitting your score', e);
-            return;
         }
+
+        timer.textContent = 'Your score has been submitted!';
+        let msg = document.createElement('p');
+        msg.className = 'italic';
+        msg.textContent = `You scored ${tix} tickets. You now have ${result.tickets}!`;
+        document.body.insertBefore(msg, document.getElementById('gamebox'));
     }
 }
 
@@ -288,7 +287,7 @@ async function go(e) {
 
     timer.textContent = 'You put a token into the machine...';
     
-    let url = `${domain()}/consume_session?session=${token}`;
+    let url = `${domain}/consume_session?session=${token}`;
 
     let response;
 
@@ -315,18 +314,24 @@ function prep() {
             errorOut('reading token', {message:'No token found.', stack:'No stack trace.'});
             return;
         }
-        // if (token !== 'abc.def' ) { // dev token
+        if (token !== 'abc.def' ) { // dev token
             tokenReal = token.split(".")[1].replace('-', '+').replace('_', '/');
             tokenContent = JSON.parse(atob(tokenReal));
-        // }
+        }
     } catch(e) {
         errorOut('decoding token', e);
         return;
     }
 
     let card = document.querySelector("#playercard");
-    card.querySelector('.name').textContent = tokenContent.user.name;
-    card.querySelector('.pic').src = tokenContent.user.avatar;
+
+    if (token == 'abc.def' ) { // dev token
+        card.querySelector('.name').textContent = 'CHEATER!';
+        card.querySelector('.pic').src = './res/spam.png';
+    } else {
+        card.querySelector('.name').textContent = tokenContent.user.name;
+        card.querySelector('.pic').src = tokenContent.user.avatar;
+    }
 
     timer = document.querySelector('#timer');
     scorecard = document.querySelector('#score');

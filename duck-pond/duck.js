@@ -6,7 +6,7 @@ let token, tokenReal, tokenContent,
 let prize = false;
 
 let domain = 'https://api.bliv.red/api'; // Change this in the dev console
-const localDomain = 'http://localhost/api';
+// const localDomain = 'http://localhost/api';
 
 function errorOut(reason, e) {
     let children = document.body.querySelectorAll(':not(script)');
@@ -85,10 +85,10 @@ function randInt(min, max) {
 }
 
 async function conclusion(tix) {
-    if (token === 'abc.def') { return true; }
+    if (token === 'abc.def') { return { valid: true, tickets: '???' }; }
     let url = `${domain}/submit_session?session=${token}&game_name=${tokenContent.context.Game}&score=${tix}`;
 
-    let response;
+    let response, result;
 
     try {
         response = await fetch(url);
@@ -97,7 +97,7 @@ async function conclusion(tix) {
             return await fail('Your token could not be validated.', response);
         }
 
-        let result = await response.json();
+        result = await response.json();
 
         if (!result.valid) {
             return await fail('Your token was rejected by the server.', {fake:true, reason:result.reason});
@@ -106,7 +106,8 @@ async function conclusion(tix) {
     } catch (e) {
         return errorOut('submitting your score', e);
     }
-    return true;
+    
+    return result;
 }
 
 let prizes = [
@@ -243,12 +244,12 @@ async function go(e) {
         }
 
         for (let duck of ducks) {
-            duck.addEventListener('pointerdown', () => {
+            duck.addEventListener('pointerdown', async () => {
                 // console.log('click');
                 let box = document.querySelector('#gamebox');
                 if (box.classList.contains('active')) {
-                    let valid = conclusion(prizes[duck.prize]);
-                    if (valid) {
+                    let result = await conclusion(prizes[duck.prize]);
+                    if (result) {
                         let bigDuck = document.createElement('div');
                         bigDuck.textContent = prizes[duck.prize];
                         bigDuck.className = 'bigduck';
@@ -263,6 +264,11 @@ async function go(e) {
                         stat.textContent = 'GAME WIN!!!';
                         stat.style.color = 'yellow';
                         stat.style.fontSize = '1.5em';
+
+                        let tix = document.createElement('p');
+                        console.log(result);
+                        tix.textContent = `You now have ${result['tickets']} tickets!`;
+                        document.body.insertBefore(tix, document.querySelector('#playercard'));
 
                         bgm.pause();
                         if (!checkbox.checked) {
