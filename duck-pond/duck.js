@@ -1,7 +1,7 @@
 'use strict';
 
 let token, tokenReal, tokenContent,
-    intro, bgm, sfx, stat, checkbox;
+    intro, bgm, sfx, stat, checkbox, audioContext, gain;
 
 let prize = false;
 
@@ -221,10 +221,29 @@ async function burn_token() {
     return true;
 }
 
+async function start_audio_backend() {
+    audioContext = new AudioContext();
+
+    gain = audioContext.createGain();
+
+    for (let a of [bgm, intro, sfx]) {
+        let z = audioContext.createMediaElementSource(a);
+        z.connect(gain).connect(audioContext.destination);
+    }
+
+    intro.addEventListener('ended', () => {
+        bgm.play();
+    });
+
+    mute(); // check if we should turn the vol off now that we have an audio context
+}
+
 async function go(e) {
     e.target.remove();
     
     stat.textContent = 'You put a token into the machine..';
+
+    start_audio_backend(); // no need to call back this promise...
     
     document.querySelector('.rules').classList.add('hidden');
     setTimeout(()=>{document.querySelector('.rules').remove();}, 500);
@@ -234,14 +253,12 @@ async function go(e) {
     if (valid) {
         stat.textContent = 'Pick a duck!'
 
-        if (!checkbox.checked) {
+        setTimeout(()=>{
+            if (audioContext.state == 'suspended') {
+                audioContext.resume();
+            }
             intro.play();
-            intro.addEventListener('ended', () => {
-                if (!checkbox.checked && !document.querySelector('#gamebox').classList.contains('over')) {
-                    bgm.play();
-                }
-            })
-        }
+        },50);
 
         for (let duck of ducks) {
             duck.addEventListener('pointerdown', async () => {
@@ -270,10 +287,9 @@ async function go(e) {
                         tix.textContent = `You now have ${result['tickets']} tickets!`;
                         document.body.insertBefore(tix, document.querySelector('#playercard'));
 
+                        intro.pause();
                         bgm.pause();
-                        if (!checkbox.checked) {
-                            sfx.play();
-                        }
+                        sfx.play();
                     }
                 }
             });
@@ -284,10 +300,12 @@ async function go(e) {
 }
 
 function mute() {
-    if (checkbox.checked) {
-        bgm.pause();
-    } else {
-        bgm.play();
+    if (audioContext) {
+        if (checkbox.checked) {
+            gain.gain.value = 0;
+        } else {
+            gain.gain.value = 1;
+        }
     }
 }
 
@@ -320,9 +338,10 @@ function loadToken() {
 
 function prep() {
     stat = document.querySelector('#status');
-    intro = document.querySelector('#intro');
-    bgm = document.querySelector('#bgm');
-    sfx = document.querySelector('#sfx');
+    bgm = document.querySelector(`#bgm`
+    );
+    intro = document.querySelector(`#intro`);
+    sfx = document.querySelector(`#sfx`);
     checkbox = document.querySelector('input');
 
     loadToken();
@@ -337,7 +356,17 @@ function prep() {
     button.textContent = 'Go!';
     button.id = 'raedy';
     document.body.insertBefore(button, stat);
-    button.addEventListener('pointerdown', go);
+    button.addEventListener('click', go);
+    // DUDE OKAY SO
+    // I WAS TEARING MY HAIR OUT TRYING TO FIGURE OUT WHY THIS WASNT PLAYING
+    // AUDIO ON MOBILE
+    // AND IT TURNS OUT
+    // DESPITE pointerdown BEING A DROP-IN UNIVERSAL REPLACEMENT FOR ONMOUSEDOWN
+    // LITERALLY EVERYWHERE
+    // CHROME DOESN'T COUNT IT AS "INTERACTING WITH THE DOCUMENT"
+    // FOR THE PURPOSES OF PLAYING MEDIA
+    // SO YOU JUST HAVE TO USE CLICK FOR *SOME* FUCKING REASON
+    // FUCK
 }
 
 if (document.readyState !== 'loading') { // skip listener if dom already loaded
