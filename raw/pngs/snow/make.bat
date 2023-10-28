@@ -1,2 +1,0 @@
-ffmpeg -r 30 -f image2 -i .\%%04d.png -vf palettegen=reserve_transparent=1 palette.png
-ffmpeg -r 30 -f image2 -i .\%%04d.png -i palette.png -lavfi paletteuse=alpha_threshold=128 -gifflags -offsetting ..\out.gif
