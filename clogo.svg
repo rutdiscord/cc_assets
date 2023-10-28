@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1024"
+   height="512"
+   viewBox="0 0 1024 512.00002"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="clogo.svg"
+   inkscape:export-filename="clogo.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.7786055"
+     inkscape:cx="396.86337"
+     inkscape:cy="294.11557"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#00000000" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:146.667px;line-height:1;font-family:BatFont;-inkscape-font-specification:BatFont;text-align:start;letter-spacing:14px;text-anchor:start;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:14.3622;stroke-linecap:square;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="text3"
+       transform="matrix(1.2951169,0,0,1.2951169,-119.56725,-112.89709)"><textPath
+         xlink:href="#path3"
+         id="textPath3"
+         dx="0 0 0 0 0"
+         style="letter-spacing:14px;stroke-width:14.3622;stroke-dasharray:none">CARNIVAL</textPath></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.5285px;line-height:1;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS';text-align:start;text-anchor:start;fill:#d75ad7;fill-opacity:1;stroke:#000000;stroke-width:6.02768;stroke-linecap:square;stroke-dasharray:none;paint-order:markers stroke fill"
+       x="24.100691"
+       y="41.083462"
+       id="text1"
+       transform="skewX(-16.768102)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="24.100691"
+         y="41.083462"
+         style="fill:#d75ad7;fill-opacity:1;stroke-width:6.02767">THE R/UNDERTALE DISCORD SERVER PRESENTS...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.333px;line-height:1;font-family:BatFont;-inkscape-font-specification:BatFont;text-align:start;text-anchor:start;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:14.3622;stroke-linecap:square;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="text2"
+       transform="matrix(1.2951169,0,0,1.2951169,-111.79655,-120.66779)"><textPath
+         xlink:href="#path2"
+         id="textPath2"><tspan
+           id="tspan2"
+           style="font-size:133.333px;stroke-width:14.3622;stroke-dasharray:none">CARNIVOROUS</tspan></textPath></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4.53544;stroke-linecap:square;stroke-dasharray:none;paint-order:markers stroke fill;opacity:0"
+       d="m 191.62886,423.91195 c 0,0 185.24978,-297.79372 480.33798,-123.10081"
+       id="path2" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4.53544;stroke-linecap:square;stroke-dasharray:none;paint-order:markers stroke fill;opacity:0"
+       d="m 379.29681,353.15534 c 0,0 250.71687,245.23384 495.83169,5.41436"
+       id="path3" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:84.0215px;line-height:1;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;text-align:start;letter-spacing:-7.12682px;text-anchor:start;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:7.59982;stroke-linecap:square;stroke-dasharray:none;paint-order:markers stroke fill"
+       x="54.698559"
+       y="134.29391"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         x="54.698559"
+         y="134.29391"
+         style="letter-spacing:-7.12682px;stroke-width:7.59982;stroke-dasharray:none"><tspan
+   style="letter-spacing:-3.05436px;stroke-width:7.59982"
+   id="tspan5">T</tspan>HE</tspan></text>
+  </g>
+</svg>

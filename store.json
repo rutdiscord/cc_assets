@@ -274,5 +274,39 @@
             "name": "Bootleg Sans Plushie [BIG SHOT]",
             "description": "\"Solid Gold\" and \"Plushie\" might be oxymorons."
         }
+    },
+    "mirror": {
+        "0" : {
+            "preview": "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorCommon.gif",
+            "download": [
+                "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorCommon.blend"
+            ],
+            "name": "Framed Photo of Mettaton's Biggest Fan (Slimy)",
+            "description": "Smells like pennies."
+        },
+        "1" : {
+            "preview": "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorRare.gif",
+            "download": [
+                "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorRare.blend"
+            ],
+            "name": "Framed Photo of Mettaton's Biggest Fan (Half-Price)",
+            "description": "You've\\* never\\* looked\\* better\\*."
+        },
+        "2" : {
+            "preview": "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorEpic.gif",
+            "download": [
+                "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorEpic.blend"
+            ],
+            "name": "Framed Photo of Mettaton's Biggest Fan (Specil)",
+            "description": "For best results, lock your phone screen now."
+        },
+        "3" : {
+            "preview": "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorLegendary.gif",
+            "download": [
+                "https://rutdiscord.github.io/halloween2023/final/mirror/mirrorLegendary.blend"
+            ],
+            "name": "Framed Photo of Mettaton's Biggest Fan [BIG SHOT]",
+            "description": "Your fingers smudge it almost instantly."
+        }
     }
 }
