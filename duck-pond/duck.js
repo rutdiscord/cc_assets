@@ -62,14 +62,14 @@ async function fail(reason, response) {
     if (output) {
         let message = document.createElement('p');
         message.textContent = 'The backend said:';
-        box.append(message);
+        document.body.append(message);
         message = document.createElement('code');
         message.textContent = output;
-        box.append(message);
+        document.body.append(message);
     } else {
         let message = document.createElement('p');
         message.textContent = 'The backend said nothing.';
-        box.append(message);
+        document.body.append(message);
     }
 
     let disclaimer = document.createElement('p');
