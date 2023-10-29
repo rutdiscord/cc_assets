@@ -69,8 +69,9 @@
     },
     "keychain": {
         "0" : {
-            "preview": "https://rutdiscord.github.io/halloween2023/final/sticker/keychainCommon.mp4",
+            "preview": "https://rutdiscord.github.io/halloween2023/final/sticker/keychainCommon.gif",
             "download": [
+                "https://rutdiscord.github.io/halloween2023/final/sticker/keychainCommon.mp4",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychainCommon.blend",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychain.ogg"
             ],
@@ -78,8 +79,9 @@
             "description": "Smells like silicon."
         },
         "1" : {
-            "preview": "https://rutdiscord.github.io/halloween2023/final/keychain/keychainRare.mp4",
+            "preview": "https://rutdiscord.github.io/halloween2023/final/keychain/keychainRare.gif",
             "download": [
+                "https://rutdiscord.github.io/halloween2023/final/keychain/keychainRare.mp4",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychainRare.blend",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychain.ogg"
             ],
@@ -87,8 +89,9 @@
             "description": "Listen to that moldy oldie in glorious Drive-Thru Stereo!"
         },
         "2" : {
-            "preview": "https://rutdiscord.github.io/halloween2023/final/keychain/keychainEpic.mp4",
+            "preview": "https://rutdiscord.github.io/halloween2023/final/keychain/keychainEpic.gif",
             "download": [
+                "https://rutdiscord.github.io/halloween2023/final/keychain/keychainEpic.mp4",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychainEpic.blend",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychain.ogg"
             ],
@@ -96,8 +99,9 @@
             "description": "...Except have a sound higher quality than 22100 Hz apparently."
         },
         "3" : {
-            "preview": "https://rutdiscord.github.io/halloween2023/final/keychain/keychainLegendary.mp4",
+            "preview": "https://rutdiscord.github.io/halloween2023/final/keychain/keychainLegendary.gif",
             "download": [
+                "https://rutdiscord.github.io/halloween2023/final/keychain/keychainLegendary.mp4",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychainLegendary.blend",
                 "https://rutdiscord.github.io/halloween2023/final/keychain/keychain.ogg"
             ],
