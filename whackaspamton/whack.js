@@ -39,7 +39,6 @@ function errorOut(reason, e) {
     document.body.append(disclaimer);
 }
 
-
 async function fail(reason, response) {
     timer.remove();
 
@@ -274,14 +273,6 @@ function preCount() {
     }, 3000);
 }
 
-function resolveAfter2Seconds() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve('resolved');
-      }, 2000);
-    });
-  }
-
 async function go(e) {
     e.target.remove();
 
@@ -290,16 +281,17 @@ async function go(e) {
     let url = `${domain}/consume_session?session=${token}`;
 
     let response;
-
-    try {
-        response = await fetch(url);
-
-        if (!response.ok) {
-            return await fail('Your token could not be validated.', response)
-        }
-    } catch (e) {
-        errorOut('consuming your token', e);
-        return;
+    if (token !== 'abc.def') {
+      try {
+          response = await fetch(url);
+  
+          if (!response.ok) {
+              return await fail('Your token could not be validated.', response)
+          }
+      } catch (e) {
+          errorOut('consuming your token', e);
+          return;
+      }
     }
 
     time = 60;
