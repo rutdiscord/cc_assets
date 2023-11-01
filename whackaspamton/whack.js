@@ -175,7 +175,21 @@ async function conclusion() {
             let response;
 
             try {
-                response = await fetch(url);
+                retrying = true
+                while (retrying){
+                    retrying = false
+                    try {
+                        response = await fetch(url);
+                    } catch (e) {
+                        if(e instanceof TypeError) { // network error
+                            alert('A network error occurred. Trying again after 5 seconds.');
+                            retrying = true
+                            await new Promise((resolve) => { setTimeout(resolve, 5000); });
+                        } else {
+                            throw e;
+                        }
+                    }
+                }
 
                 if (!response.ok) {
                     return await fail('Your token could not be validated.', response);
