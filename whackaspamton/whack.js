@@ -175,7 +175,7 @@ async function conclusion() {
             let response;
 
             try {
-                retrying = true
+                let retrying = true;
                 while (retrying){
                     retrying = false
                     try {

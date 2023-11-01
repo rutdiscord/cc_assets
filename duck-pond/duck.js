@@ -91,7 +91,7 @@ async function conclusion(tix) {
     let response, result;
 
     try {
-        retrying = true
+        let retrying = true
         while (retrying){
             retrying = false
             try {
