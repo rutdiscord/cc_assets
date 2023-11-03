@@ -213,3 +213,11 @@ h1.gmod {
 #status {
   white-space: pre-wrap;
 }
+
+#gbcr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+}

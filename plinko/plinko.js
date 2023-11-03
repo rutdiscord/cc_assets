@@ -10,7 +10,13 @@ let looping = true,
     shake = false,
     shakeTime = 5,
     bottomCount = 0,
-    finished = false;
+    finished = false,
+    offset = {
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+    };
 
 let domain = 'https://api.bliv.red/api'; // Change this in the dev console
 // const localDomain = 'http://localhost/api';
@@ -94,11 +100,12 @@ function randInt(min, max) {
 }
 
 const getRectByBoxStandards = element => { 
+    // i am never doing raw element based collision again
     const e = element.getBoundingClientRect()
     const b = box.getBoundingClientRect();
     const obj = {}
     for (let x of ['top', 'right', 'bottom', 'left']) {
-        obj[x] = e[x] - b[x] - 1; //wtf?
+        obj[x] = e[x] - b[x] - offset[x];
     }
     
     return obj
@@ -150,8 +157,8 @@ async function physics() {
     if (rect.left < 0) {
         rect.left = 0;
         ball.x *= -1;
-    } else if (rect.left > 326) {
-        rect.left = 326;
+    } else if (rect.left > 334) {
+        rect.left = 334;
         ball.x *= -1;
     }
     if (rect.top > 334) {
@@ -159,7 +166,7 @@ async function physics() {
         gravity *= -0.5;
     }
 
-    if (rect.top >= 288) {
+    if (rect.top >= 290) {
         let posts = [
             -2,
             48,
@@ -171,31 +178,36 @@ async function physics() {
             348
         ]
         for (let post of posts) {
-            if (
-                (post > rect.left && post < rect.left+16) ||
-                (post+3 > rect.left && post+3 < rect.left+16)
-            ) {
-                ball.x *= -1;
-                if (ball.x == 0) {
-                    ball.x = randInt(-1, 2) * pRNG();
+            for (let i = 0; i <= 3; i++) {
+                if (post+i > rect.left && post+i < rect.left+16) {
+                    if (ball.x == 0) {
+                        // bounce randomly
+                        ball.x = (pRNG() - 0.5) * 2;
+                    } else if (Math.abs((post+2) - rect.left) > Math.abs((post+2)- (rect.left + 16))) {
+                        // bounce left
+                        if (ball.x > 0) {ball.x *= -1;}
+                    } else {
+                        // bounce right
+                        if (ball.x < 0) {ball.x *= -1;}
+                    }
+
+                    if (rect.top < 306 && gravity > 0) {
+                        // bounce off the top of posts
+                        gravity *= -1;
+                    }
+                    break;
                 }
-                if (rect.top < 290 && gravity > 0) {
-                    // bounce off the top of posts
-                    gravity *= -1;
-                }
-                break;
             }
         }
     }
 
-    if (rect.top > 333) {
+    if (rect.top > 318 && !finished) {
         if (ball.x > 0) { ball.x -= 0.01; } else { ball.x += 0.01 }
         if (ball.x >= 0.05 && ball.x <= 0.05) { ball.x = 0; }
 
         bottomCount++;
 
-        if (bottomCount == 120) {
-            // console.log('timeout');
+        if (bottomCount >= 120) {
             finished = true;
             let award = 'left';
             document.querySelector('button').remove();
@@ -215,7 +227,7 @@ async function physics() {
                             stat.textContent += `\nYou also got a ${result.reward} for a PACIFIST run!`
                         }
                         if (paciGeno <= -3) {
-                            stat.textContent += '\nYou also got a ${result.reward} for a GENOCIDE run!'
+                            stat.textContent += `\nYou also got a ${result.reward} for a GENOCIDE run!`
                         }
                         function fadeOut() {
                             gain.gain.value -= 0.1;
@@ -236,15 +248,12 @@ async function physics() {
                 } else if (rect.left > 350) {
                     award = 'left';
                 }
-                ball.style.transform = `translate(${rect.left}px, ${rect.top}px)`
             }
         }
-    } else {
-        bottomCount = 0;
     }
 
-    ball.style.transform = `translate(${rect.left}px, ${rect.top}px)`
-    setTimeout(physics, 16); // ~60fps
+    ball.style.transform = `translate(${rect.left}px, ${rect.top}px)`;
+    setTimeout(physics, 16);
 }
 
 async function conclusion(tix) {
@@ -535,6 +544,8 @@ function prep() {
     checkbox = document.querySelector('input');
     box = document.querySelector('#gamebox');
     marker = document.querySelector('#marker');
+
+    offset = getRectByBoxStandards(document.querySelector('#gbcr'));
 
     loadToken();
 
