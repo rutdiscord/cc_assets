@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Drop a Ball</title>
+    <link rel="icon" type="image/png" href="./res/geno/sans.png">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <link rel="stylesheet" href="./stylesheet.css" />
+  </head>
+  <body>
+    <h1>Drop-a-Ball!</h1>
+    <p class="small italic"><input type="checkbox"/> <span>Mute audio?</span></p>
+    <div id="gamebox"></div>
+    <div id="barholder">
+      <div id="marker"></div>
+      <div id="bar">
+        <div class="left">GENOCIDE</div>
+        <div class="center">NEUTRAL</div>
+        <div class="right">PACIFIST</div>
+      </div>
+    </div>
+    <p id="status"></p>
+    <div class="rules">
+      <p>Drop a ball to see where it lands!</p>
+      <p>If the ball gets stuck, you can <span style="color:#0F0;">SHAKE</span> the board to try to unstick it!</p>
+      <h3>BONUS RULES:</h3>
+      <p>Hit a minor character to <span style="color:#0F0;">SPARE</span> it!</p>
+      <p>Hit a major character to <span style="color:#F00;">ATTACK</span> it!</p>
+      <div id="bubble">
+        <p class="big">Spamton says...</p>
+        <p>NO BONUSES FOR [Fencesitters]!!!</p>
+      </div>
+    </div>
+    <div id="playercard">
+      <img class="pic" />
+      <h3>Hello, my name is</h3>
+      <div class="name"></div>
+    </div>
+    <audio id="intro">
+      <source src="./res/intro.ogg" type="audio/ogg" />
+      <source src="./res/intro.mp3" type="audio/mpeg" />
+    </audio>
+    <audio loop id="bgm">
+      <source src="./res/bgm.ogg" type="audio/ogg" />
+      <source src="./res/bgm.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="donk">
+      <source src="./res/donk.ogg" type="audio/ogg" />
+      <source src="./res/donk.mp3" type="audio/mpeg" />
+    </audio>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+  <script async src="plinko.js"></script>
+  </body>
+</html>

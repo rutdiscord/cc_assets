@@ -1,0 +1,215 @@
+@keyframes gmod {
+  0% {
+    color: red;
+  }
+  50% {
+    color: white;
+  }
+  100% {
+    color: red;
+  }
+}
+
+html, body {
+  background: black;
+  color: #DDD;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 16pt;
+}
+
+#gamebox {
+  border: 1px solid green;
+  margin: 1em auto;
+  width: 350px;
+  height: 350px;
+  position: relative;
+  overflow: visible;
+  touch-action:none;
+}
+
+button {
+  appearance: none;
+  border-radius: 0;
+  border: 2px solid green;
+  font: 14pt monospace;
+  color: green;
+  background: black;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  margin: 1em auto;
+}
+
+button:disabled {
+  border-color: grey;
+  color: grey;
+}
+
+.italic { font-style: italic; }
+.small { font-size: 0.75em; }
+
+.error, code {
+  font-size: 10pt;
+  white-space: pre-wrap;
+}
+
+.error {
+  font-family: 1.5em !important;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.rules {
+  border-radius: 5px;
+  background: url('./res/woodtex.jpg');
+  background-size: cover;
+  color: rgb(53, 28, 12);
+  margin: 0 auto 2em;
+  width: 380px;
+  padding: 8px;
+  transform: rotate(5deg);
+  text-shadow: 1px 1px 1px black;
+  box-shadow: 4px 4px 0 4px rgb(53, 28, 12);
+  font-family: cursive; /*TODO: webfont*/
+  line-height: 1; /* <strong bad voice> i hate you */
+}
+.rules.hidden {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+.rules p {
+  margin: 0.5em 0;
+}
+.rules h3 {
+  color: #620;
+  margin-bottom: 0.15em;
+}
+#bubble {
+  font-family: sans-serif;
+  padding: 0.5em 0 2em;
+  background: url('./res/bubble.png')
+}
+#bubble .big {
+  color: red;
+  text-shadow: 1px 1px 0 red;
+  text-align: left;
+  padding-left: 8px;
+}
+
+#playercard {
+  font-family: cursive;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  width: 280px;
+  height: 100px;
+  padding-left: 120px;
+  padding-top: 30px;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  transform: rotate(-5deg);
+}
+#playercard h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: normal;
+  color: red;
+  margin: 0;
+}
+#playercard .pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  left: 8px;
+  top: 16px;
+}
+
+h1.gmod {
+  animation: gmod 1s infinite linear;
+}
+
+#barholder {
+  width: 500px;
+  padding-top: 1em;
+  margin: auto;
+  position: relative;
+}
+#marker {
+  position: absolute;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+  width: 0; 
+  height: 0; 
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  
+  border-top: 1em solid orange;
+}
+#bar {
+  background: linear-gradient(to right, #F00, #FFF, #0F0);
+  position: relative;
+  height: 1.25em;
+  display: flex;
+}
+#bar div {
+  display: inline-block;
+  color: black;
+  width: 165px;
+}
+#bar div.left {
+  background: red;
+}
+#bar div.center {
+  background: white;
+}
+#bar div.right {
+  background: #0F0;
+}
+
+.peg {
+  position: absolute;
+  background-color: #FFF;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.peg.paci {
+  background-color: #0F0;
+}
+.peg.geno {
+  background-color: #F00;
+}
+.peg.hit {
+  outline: 2px solid white;
+}
+.peg.geno.hit {
+  background-color: #F88;
+}
+.peg.paci.hit {
+  background-color: #8F8;
+}
+
+#ball {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%) translate(160px, -8px);
+  top: 0; left: 0;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.endbox {
+  position: absolute;
+  bottom: 0;
+  width: 46px;
+  height: 46px;
+  border-left: 2px solid green;
+  border-right: 2px solid green;
+  font-size: 12pt;
+  color: green;
+}
+#status {
+  white-space: pre-wrap;
+}
