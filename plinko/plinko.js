@@ -258,7 +258,7 @@ async function physics() {
 
 async function conclusion(tix) {
     let reward = false;
-    if (paciGeno > 3 || paciGeno < 3) { reward = true; }
+    if (Math.abs(paciGeno) >= 3) { reward = true; }
 
     if (token === 'abc.def') { return { valid: true, tickets: '???', reward: 'A little crown <3' }; }
 
