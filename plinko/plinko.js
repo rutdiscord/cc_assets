@@ -221,7 +221,7 @@ async function physics() {
 
                         let result = await conclusion(tix);
 
-                        stat.textContent = `You got ${result.tickets} tickets!`
+                        stat.textContent = `You got ${tix} tickets! You now have ${result.tickets} tickets.`
 
                         if (paciGeno >= 3) {
                             stat.textContent += `\nYou also got a ${result.reward} for a PACIFIST run!`
